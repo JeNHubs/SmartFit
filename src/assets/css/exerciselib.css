@@ -1,0 +1,559 @@
+/* Global reset for html and body to ensure full height */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+}
+
+Link {
+  text-decoration: none; 
+}
+
+/* Main container for the app */
+.ExerciseLibrary {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* NAVBAR - Base Styles */
+.navbar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;  /* Ensure space between brand and links */
+  padding: 20px;
+  align-items: center;
+  color: white;
+  background-color: #333;
+  flex-wrap: wrap; /* Allow wrapping for smaller screens */
+}
+
+/* BRAND */
+.brand {
+  font-weight: 700;
+  font-size: 24px;
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+}
+
+/* Smart and Fit Colors */
+.smart {
+  color: #FFFFFF;
+}
+
+.fit {
+  color: #FF0000;
+}
+
+/* NAV-LINKS */
+.nav-links {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-link {
+  font-weight: 400;
+  font-size: 15px;
+  color: #FFFFFF;
+  cursor: pointer;
+  padding: 8px;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #FF0000;
+}
+
+/* SOCIAL ICONS */
+.social-icons {
+  display: flex;
+  gap: 10px;
+}
+
+.social-icon {
+  width: 24px;
+  height: 24px;
+  background: #FFFFFF;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.social-icon:hover {
+  background: #FF0000;
+}
+
+/* MEDIA QUERIES FOR RESPONSIVENESS */
+@media (max-width: 1024px) {
+  .navbar {
+    padding: 10px;
+  }
+  .brand {
+    font-size: 20px;
+  }
+  .nav-links {
+    gap: 15px;
+  }
+  .nav-link {
+    font-size: 14px;
+  }
+  .social-icons {
+    gap: 8px;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    padding: 10px 20px;
+  }
+  .brand {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  .nav-links {
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    align-items: center;
+  }
+  .social-icons {
+    margin-top: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .brand {
+    font-size: 16px;
+  }
+  .nav-link {
+    font-size: 13px;
+  }
+  .nav-links,
+  .social-icons {
+    display: none; /* Hide nav-links and social-icons for mobile view */
+  }
+}
+
+/* Mobile menu toggle button */
+.menu-toggle {
+  display: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+}
+
+/* Header */
+.header {
+  justify-items: center;
+  background-color: black;
+  width: 100%;
+  height: 120px;
+}
+.header-container {
+  width: 75%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.exercise-headline {
+  width: auto;
+}
+.exercise-headline h2 {
+  font-size: 30px;
+  color: #FFFFFF;
+}
+.exercise-headline p {
+  font-size: 20px;
+  color: #B4AEAE;
+}
+
+.container {
+  width: 25%;
+  height: 100%;
+  display:flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+/* Search Bar */
+.search-bar {
+  width: 50%;
+  height: 45%;
+}
+
+.search-bar input {
+  width: 100%;
+  height: 100%;
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  color: #B4AEAE;
+  background: #FFFFFF;
+  border: none;
+  padding-left: 40px;
+  border-radius: 5px;
+}
+
+.search-icon {
+  margin-left: 10px;
+  margin-top: 15px;
+  align-items: center;
+  position: absolute;
+  color: #B4AEAE;
+  width: 21px;
+  height: 21px;
+  background: url('/src/img/Search_Magnifying_Glass.png') no-repeat center center;
+  background-size: contain;
+}
+
+/* Filter Styles */
+.filter {
+  width: 40%;
+  height: 45%;  
+  position: relative;
+  display: inline-block;
+}
+
+.filter-rectangle {
+  width: 100%;
+  height: 100%;
+}
+
+.filter-image {
+  width: 20px;
+  height: 20px;
+  align-content: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.filter-image img {
+  width: 100%;
+  height: 100%;
+}
+
+
+.filter-rectangle {
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.filter-image img {
+  width: 20px;
+  height: 20px;
+}
+
+.filter-toggle {
+  background-color: #FFFFFF;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 14px;
+  border: none;
+  transition: background-color 0.3s;
+}
+
+
+/* Dropdown Box for Filter */
+.filter-box {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: #fff;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+  padding: 10px;
+  border-radius: 8px;
+  margin-top: 5px;
+  z-index: 100;
+}
+
+.filter-options {
+  display: flex;
+  flex-direction: column;
+}
+
+.filter-option {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  padding: 8px 12px;
+  margin-bottom: 5px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.filter-option:hover {
+  background-color: #e0e0e0;
+}
+
+/* Hide filter box when dropdown is not open */
+.filter-dropdown.open .filter-box {
+  display: block;
+}
+
+.filter-box {
+  display: none;
+}
+
+
+
+.filter-text {
+  font-weight: 400;
+  font-size: 14px;
+  color: #888888;
+  margin-left: 10px;
+}
+
+/* Placeholder Text */
+.search-bar input::placeholder {
+  color: #B4AEAE;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  text-align: justify;
+}
+
+/* Main container for exercise row */
+.exercise-container {
+  width: 100%;
+  height: auto;
+  background-color: black;
+  justify-items: center;
+  align-items: center;
+  
+}
+.exercise-row {
+  width: 75%;
+  height: auto;
+  display: flex;
+  flex-wrap: wrap;
+  background-color: black;
+  margin-bottom: 20px;
+}
+
+/* Exercise box styles */
+.exercise-box-container {
+  background-color: #27272A;
+  border-radius: 10px;
+  width: 40%;
+  color: white;
+  height: 250px;
+  max-width: 550px; /* Ensure boxes don't get too wide */
+  margin-bottom: 30px;
+  margin-left: 20px;
+}
+.exercise-box {
+  background-color: #27272A;
+  border-radius: 10px;
+  width: 100%;
+  padding: 15px;
+  color: white;
+  height: 80%;
+  max-width: 550px; /* Ensure boxes don't get too wide */
+  display: flex;
+  flex-direction: wrap;
+  justify-content: space-between;
+}
+.exercise-details-text{
+  width: 50%;
+  height: 100%;
+  align-content: center;
+}
+
+.subtitle-icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+  background: url('/public/img/target-icon.png') no-repeat center center;
+}
+.duration-icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+  background: url('/public/img/duration-icon.png') no-repeat center center;
+}
+
+.reps-icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+  background: url('/public/img/sets-icon.png') no-repeat center center;
+}
+
+/* Exercise Title */
+.exercise-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: #FFFFFF;
+  margin-bottom: 20px;
+}
+.exercise-subtitle {
+  font-size: 16px;
+  color: #848484;
+}
+
+.exercise-info, .duration, .sets-reps {
+  color: #848484;
+  display: flex;
+  flex-direction: row;
+  align-items: center
+}
+.exercise-details {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #848484;
+}
+.hardcore-label {
+  margin-top: 5px;
+  background-color: #161618;
+  border-radius: 100px;
+  padding: 5px 10px;
+  width: fit-content;
+}
+.level {
+  color: #848484;
+}
+
+.exercise-image {
+  width: 40%;
+  height: 100%;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+.exercise-image img {
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+}
+
+.exercise-button {
+  width: 100%;
+  height: 20%;
+  align-content: center;
+  text-align: center;
+  justify-items: space-around;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.toggle-details-btn {
+  padding: 10px;
+  background-color: #FFFFFF;
+  color: black;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+}
+.toggle-add-btn {
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.toggle-details-btn:hover {
+  background-color: #000000;
+  color: white;
+}
+
+.toggle-add-btn:hover {
+  background-color: #FFFFFF;
+  color: black;
+}
+
+.next-page-container {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #000000;
+}
+.next-page {
+  width: auto;
+  height: 40%;
+  
+}
+.page-button {
+  height: 100%;
+  width: 100px;
+  background-color: #FFFFFF;
+  color: black;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+.page-button:hover {
+  background-color: #FFFFFF;
+  color: black;
+}
+.page-text {
+  color: white;
+  margin-right: 10px;
+}
+
+
+
+
+/* Footer Styling */
+footer {
+  background-color: #333;
+  color: white;
+  padding: 10px;
+  text-align: flex-end;
+
+}
+
+/* Responsive Media Queries */
+@media (max-width: 1024px) {
+  .exercise-box-container {
+    width: 45%; /* Two boxes per row */
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .exercise-box-container {
+    width: 100%; /* Full width for each exercise box */
+    margin: 5px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    padding: 10px;
+  }
+  .search-bar {
+    width: 80%; /* Adjust the search bar for smaller screens */
+    top: 120px; /* Adjust position */
+  }
+  .filter {
+    top: 170px; /* Adjust filter position */
+  }
+  .exercise-box-container {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}
