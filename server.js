@@ -20,44 +20,9 @@ mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTop
   });
 
 
-//exercise Model
-const Exercise = require('./models/exercise');
-app.get('/exercise', async (req, res) => {
-  try {
-    const exercises = await Exercise.find(); // Retrieve all exercises
-    res.json(exercises); // Send the exercises as a JSON response
-  } catch (error) {
-    res.status(500).json({ message: 'Error fetching exercises', error });
-  }
-});
-
-
-
 // User Model (Example Schema)
 const User = require('./models/User'); // Assuming this is in a separate file
-const Workout = require('./models/User');
 
-
-app.post('/api/workouts', async (req, res) => {
-  const { workoutName, exercises } = req.body;
-  try {
-    const newWorkout = new Workout({ workoutName, exercises });
-    await newWorkout.save();
-    res.status(201).json(newWorkout);
-  } catch (error) {
-    res.status(400).json({ message: error.message });
-  }
-});
-
-// API to get all workouts
-app.get('/api/workouts', async (req, res) => {
-  try {
-    const workouts = await Workout.find();
-    res.status(200).json(workouts);
-  } catch (error) {
-    res.status(400).json({ message: error.message });
-  }
-});
 
 // Handle Sign-up (with password hashing)
 app.post('/signup', async (req, res) => {
@@ -135,58 +100,3 @@ app.post('/login', async (req, res) => {
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
-
-
-
-
-{/* <script>
-  window.fbAsyncInit = function() {
-    FB.init({
-      appId      : '{your-app-id}',
-      cookie     : true,
-      xfbml      : true,
-      version    : '{api-version}'
-    });
-      
-    FB.AppEvents.logPageView();   
-      
-  };
-
-  (function(d, s, id){
-     var js, fjs = d.getElementsByTagName(s)[0];
-     if (d.getElementById(id)) {return;}
-     js = d.createElement(s); js.id = id;
-     js.src = "https://connect.facebook.net/en_US/sdk.js";
-     fjs.parentNode.insertBefore(js, fjs);
-   }(document, 'script', 'facebook-jssdk'));
-</script>
-
-
-FB.getLoginStatus(function(response) {
-  statusChangeCallback(response);
-});
-
-
-
-{
-  status: 'connected',
-  authResponse: {
-      accessToken: '...',
-      expiresIn:'...',
-      signedRequest:'...',
-      userID:'...'
-  }
-}
-
-
-<fb:login-button 
-  scope="public_profile,email"
-  onlogin="checkLoginState();">
-</fb:login-button>
-
-
-function checkLoginState() {
-  FB.getLoginStatus(function(response) {
-    statusChangeCallback(response);
-  });
-} */}
